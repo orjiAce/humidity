@@ -15,7 +15,44 @@
   height: 100vh;
 
 }
-
+.searchBody{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+display: none;
+  transform: scale(0.7);
+  background-color: #0c0d13;
+  animation: __bounceInDown 1s ease;
+align-items: center;
+  justify-content:space-evenly;
+  flex-direction: column;
+  .closeBtn{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+  .searchWrap{
+    width: 60%;
+    height: 50px;
+    border-bottom: 1px solid #fff;
+    input{
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+      font-size: 1.3em;
+    }
+  }
+}
 
 .background {
   overflow: hidden;
@@ -32,9 +69,10 @@
 
   background-repeat: no-repeat;
   animation: cameraPan 10s infinite;
-  opacity: 0;
+
 
 }
+
 .overlay{
   overflow: hidden;
   left: 0;
@@ -66,6 +104,7 @@ justify-content: space-between;
     justify-content: space-evenly;
     align-content: center;
     align-items: center;
+    justify-items: center;
     flex-direction: column;
 
     .search{
@@ -136,7 +175,6 @@ justify-content: space-between;
       border-radius: 100%;
       background-color: rgba(0, 10, 6, 0.6);
       text-align: center;
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,6 +188,16 @@ justify-content: space-between;
         font-weight: 600;
       }
     }
+    .condition{
+      width: 180px;
+      height: 35px;
+      border-radius: 30px;
+      background-color: #101010;
+      color: #05C867;
+      text-align: center;
+      font-weight: 600;
+      line-height: 35px;
+    }
   }
 
 
@@ -160,6 +208,7 @@ justify-content: space-between;
     background-color: #000a06;
   }
 }
+
 @keyframes cameraPan {
   0% {
     background-position: 0% 0%;
@@ -178,6 +227,27 @@ justify-content: space-between;
   100% {
     background-position: 0% 0%;
   }
+}
+
+@keyframes __bounceInDown {
+0%{
+  width: 100%;
+  height: 0;
+  transform: translateY(0) scaleY(0.7);
+
+}
+
+  75% {
+    transform:translateY(20) scaleY(1.5);;
+    width: 100%;
+    height: 60vh;
+  }
+  100%{
+    transform: translateY(100)  scale(1);;
+    width: 100%;
+    height: 100vh;
+  }
+
 }
 
 
