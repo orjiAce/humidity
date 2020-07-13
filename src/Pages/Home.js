@@ -68,13 +68,14 @@ class Home extends Component {
             ease: "power3.inOut"
         });
         const my = (weatherData) => {
-            /* this.setState({
+             this.setState({
                  weatherData: weatherData
-             })*/
+             })
+            console.log(this.state.weatherData)
         }
         navigator.geolocation.getCurrentPosition(function (position) {
-            //  console.log("Latitude is :", position.coords.latitude);
-            // console.log("Longitude is :", position.coords.longitude);
+              console.log("Latitude is :", position.coords.latitude);
+             console.log("Longitude is :", position.coords.longitude);
             // Get address from latidude & longitude.
             Geocode.fromLatLng(Math.round(position.coords.latitude), Math.round(position.coords.longitude) - 2).then(
                 response => {
@@ -266,7 +267,7 @@ class Home extends Component {
 
     render() {
         const {location, current} = this.state.weatherData
-        console.log(this.state.weatherData)
+       console.log(this.state.weatherData)
         const {toggle} = this.state;
 
         return (
@@ -308,12 +309,12 @@ class Home extends Component {
                         </div>
 
                         <div className="currentCity">
-                            {/*   {
+                              {
                                 location && (
                                     <div className="city">{location.name}, {location.country}</div>
                                 )
-                            }*/}
-                            <div className="city">Warri, nigeria</div>
+                            }
+                           {/* <div className="city">Warri, nigeria</div>*/}
 
                             <div className="cityMarker">
                                 <img src={mapMarker} alt="icon"/> <small>Current city</small>
@@ -321,16 +322,28 @@ class Home extends Component {
                         </div>
 
                         <div className="temperature" ref={el => (this.temp = el)}>
+                            {
+                                current && (
                             <div className="temp">
-                                24<small>°C</small>
+                                {current.temperature}<small>°C</small>
                             </div>
+                                )
+                            }
                             <small>Today</small>
                         </div>
-                        <small className="feels">Feels like</small>
+                        {
+                            current && (
+                        <small className="feels">Feels like {current.feelslike}</small>
+                            )
+                        }
+                        {
+                            current && (
                         <div className="condition" ref={el => ( this.condition = el)}>
-                            Partly cloudy
+                            {
+                                current.weather_descriptions
+                            }
                         </div>
-
+                            )}
 
                         <div className="mobSearch" onClick={this.showSearch}>
                             <div>
@@ -355,9 +368,16 @@ class Home extends Component {
                                     <img src={Sun} alt="uv index"/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        90
-                                    </div>
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.uv_index
+                                                }
+                                            </div>
+                                        )
+                                    }
+
                                     <div className="txt">
 
                                         UV Index
@@ -370,12 +390,19 @@ class Home extends Component {
                                     <FontAwesomeIcon icon={faSun}/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        90
-                                    </div>
+
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.pressure
+                                                }
+                                            </div>
+                                        )
+                                    }
                                     <div className="txt">
 
-                                        Sun
+                                        Pressure
                                     </div>
                                 </div>
                             </div >
@@ -384,9 +411,15 @@ class Home extends Component {
                                     <FontAwesomeIcon icon={faWind}/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        90
-                                    </div>
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.wind_speed
+                                                }
+                                            </div>
+                                        )
+                                    }
                                     <div className="txt">
 
                                         Wind Speed
@@ -398,9 +431,15 @@ class Home extends Component {
                                     <FontAwesomeIcon icon={faDirections}/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        90
-                                    </div>
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.wind_dir
+                                                }
+                                            </div>
+                                        )
+                                    }
                                     <div className="txt">
 
                                         Wind Dir
@@ -412,9 +451,15 @@ class Home extends Component {
                                    <img src={Humidity} alt="Humidity"/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        90
-                                    </div>
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.humidity
+                                                }
+                                            </div>
+                                        )
+                                    }
                                     <div className="txt">
 
                                    Humidity
@@ -426,9 +471,15 @@ class Home extends Component {
                                     <img src={DayNight} alt="Day and night"/>
                                 </div>
                                 <div className="data">
-                                    <div>
-                                        No
-                                    </div>
+                                    {
+                                        current && (
+                                            <div>
+                                                {
+                                                    current.is_day
+                                                }
+                                            </div>
+                                        )
+                                    }
                                     <div className="txt">
 
                                   Day?
