@@ -164,7 +164,6 @@ class Home extends Component {
     }
 
     showCurrentFull = () => {
-
         gsap.from([this.current], {
             duration: 0.8,
             transformOrigin: "bottom",

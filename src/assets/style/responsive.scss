@@ -170,7 +170,7 @@
         font-family: "Montserrat", sans-serif;
         width: 180px;
         height: 180px;
-        border-radius: 0%;
+        border-radius: 0;
         background: none;
         text-align: center;
         display: flex;
@@ -276,7 +276,7 @@
             }
           }
           .data{
-            border-radius: 0px 40px 40px 0px;
+            border-radius: 0 40px 40px 0;
 
             width: 90px;
             height: 100%;
@@ -426,7 +426,7 @@
         font-family: "Montserrat", sans-serif;
         width: 180px;
         height: 180px;
-        border-radius: 0%;
+        border-radius: 0;
         background: none;
         text-align: center;
         display: flex;
@@ -516,6 +516,7 @@
           border-radius: 40px;
           background: #0c0d13;
           display: flex;
+
           justify-content: space-evenly;
           .icon{
             float: left;
@@ -531,7 +532,7 @@
             }
           }
           .data{
-            border-radius: 0px 40px 40px 0px;
+            border-radius: 0 40px 40px 0;
 
             width: 90px;
             height: 100%;
@@ -678,7 +679,7 @@
         font-family: "Montserrat", sans-serif;
         width: 180px;
         height: 180px;
-        border-radius: 0%;
+        border-radius: 0;
         background: none;
         text-align: center;
         display: flex;
@@ -784,7 +785,7 @@ justify-items: start;
             }
           }
           .data{
-            border-radius: 0px 40px 40px 0px;
+            border-radius: 0 40px 40px 0;
 
             width: 90px;
             height: 100%;
