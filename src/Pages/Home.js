@@ -47,11 +47,7 @@ class Home extends Component {
         }
     }
 
-    getData = (weatherData) => {
-        this.setState({
-            weatherData: weatherData
-        })
-    }
+
 
 
     componentDidMount() {
@@ -168,7 +164,7 @@ class Home extends Component {
     }
 
     showCurrentFull = () => {
-        const {toggle} = this.state;
+
         gsap.from([this.current], {
             duration: 0.8,
             transformOrigin: "bottom",
@@ -223,7 +219,7 @@ class Home extends Component {
     }
 
     closeCurrent = () => {
-        const {toggle} = this.state;
+
         gsap.to(this.condition, {
             x: 0,
             y: 0,
