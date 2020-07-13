@@ -79,7 +79,7 @@ class Home extends Component {
                     console.log(address);
                     //  this.setState({address: address})
 //document.getElementById("address").innerHTML = address
-                    axios.get(`http://api.weatherstack.com/forecast?access_key=f6c77f438ddac28d7e25deb17cc9fa7d&query=${address}&hourly=3`)
+                    axios.get(`https://api.weatherstack.com/forecast?access_key=f6c77f438ddac28d7e25deb17cc9fa7d&query=${address}&hourly=3`)
                         .then((res) => {
 
                             my(res.data)
@@ -305,9 +305,9 @@ class Home extends Component {
 
                         <div className="currentCity">
                               {
-                                location && (
+                                location && location.name ? (
                                     <div className="city">{location.name}, {location.country}</div>
-                                )
+                                ):(<div className="city">Abuja, nigeria</div>)
                             }
                            {/* <div className="city">Warri, nigeria</div>*/}
 
@@ -318,27 +318,32 @@ class Home extends Component {
 
                         <div className="temperature" ref={el => (this.temp = el)}>
                             {
-                                current && (
+                                current && current.temperature ?(
                             <div className="temp">
                                 {current.temperature}<small>°C</small>
                             </div>
-                                )
+                                ): ( <div className="temp">
+                                    24<small>°C</small>
+                                </div>)
                             }
                             <small>Today</small>
                         </div>
                         {
-                            current && (
+                            current &&  current.feelslike ?(
                         <small className="feels">Feels like {current.feelslike}</small>
-                            )
+                            ):(<small className="feels">Feels like 26</small>)
                         }
                         {
-                            current && (
+                            current &&  current.weather_descriptions ? (
                         <div className="condition" ref={el => ( this.condition = el)}>
                             {
                                 current.weather_descriptions
                             }
                         </div>
-                            )}
+                            ):(<div className="condition" ref={el => ( this.condition = el)}>
+                                Partly cloudy
+                            </div>)
+                        }
 
                         <div className="mobSearch" onClick={this.showSearch}>
                             <div>
@@ -364,13 +369,13 @@ class Home extends Component {
                                 </div>
                                 <div className="data">
                                     {
-                                        current && (
+                                        current && current.uv_index ? (
                                             <div>
                                                 {
                                                     current.uv_index
                                                 }
                                             </div>
-                                        )
+                                        ):(<div>1</div>)
                                     }
 
                                     <div className="txt">
@@ -387,13 +392,13 @@ class Home extends Component {
                                 <div className="data">
 
                                     {
-                                        current && (
+                                        current &&  current.pressure ? (
                                             <div>
                                                 {
                                                     current.pressure
                                                 }
                                             </div>
-                                        )
+                                        ):(<div> 1012</div>)
                                     }
                                     <div className="txt">
 
@@ -407,13 +412,15 @@ class Home extends Component {
                                 </div>
                                 <div className="data">
                                     {
-                                        current && (
+                                        current && current.wind_speed ?  (
                                             <div>
                                                 {
                                                     current.wind_speed
                                                 }
                                             </div>
-                                        )
+                                        ): (   <div>
+                                           2
+                                        </div>)
                                     }
                                     <div className="txt">
 
@@ -427,13 +434,15 @@ class Home extends Component {
                                 </div>
                                 <div className="data">
                                     {
-                                        current && (
+                                        current &&   current.wind_dir ?  (
                                             <div>
                                                 {
                                                     current.wind_dir
                                                 }
                                             </div>
-                                        )
+                                        ): (  <div>
+                                            SE
+                                        </div>)
                                     }
                                     <div className="txt">
 
@@ -447,13 +456,13 @@ class Home extends Component {
                                 </div>
                                 <div className="data">
                                     {
-                                        current && (
+                                        current &&  current.humidity ?(
                                             <div>
                                                 {
                                                     current.humidity
                                                 }
                                             </div>
-                                        )
+                                        ):(<div>89</div>)
                                     }
                                     <div className="txt">
 
@@ -467,13 +476,13 @@ class Home extends Component {
                                 </div>
                                 <div className="data">
                                     {
-                                        current && (
+                                        current &&   current.is_day ?(
                                             <div>
                                                 {
                                                     current.is_day
                                                 }
                                             </div>
-                                        )
+                                        ):(<div>No</div>)
                                     }
                                     <div className="txt">
 
